@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  biovision-web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: biovision-web-service
+    ports:
+      - "8080:8080"
+    environment:
+      - NODE_ENV=production
+      - NEXT_PUBLIC_API_URL=http://localhost:5000
+      - NEXT_PUBLIC_SERVER_URL=http://localhost:5000
+    networks:
+      - biovision-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 --spider http://localhost:8080 || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+networks:
+  biovision-network:
+    driver: bridge
+
+volumes:
+  biovision-data:
+    driver: local

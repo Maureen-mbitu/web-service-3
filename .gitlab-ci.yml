@@ -1,0 +1,103 @@
+# GitLab CI/CD Pipeline for BioVision Web Service
+# This pipeline builds and deploys the Dockerized web service
+
+stages:
+  - build
+  - test
+  - deploy
+
+variables:
+  DOCKER_IMAGE_NAME: "biovision-web-service"
+  DOCKER_TAG: "$CI_COMMIT_SHORT_SHA"
+
+# Build Docker image
+build:
+  stage: build
+  image: docker:latest
+  services:
+    - docker:dind
+  before_script:
+    - docker info
+  script:
+    - echo "Building Docker image for BioVision Web Service..."
+    - docker build -t $DOCKER_IMAGE_NAME:$DOCKER_TAG .
+    - docker build -t $DOCKER_IMAGE_NAME:latest .
+    - echo "Docker build completed successfully"
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+    - if: $CI_COMMIT_BRANCH == "develop"
+    - if: $CI_MERGE_REQUEST_IID
+
+# Test the built image
+test:
+  stage: test
+  image: docker:latest
+  services:
+    - docker:dind
+  script:
+    - echo "Testing Docker image..."
+    - docker run --rm -d --name test-container -p 8080:8080 $DOCKER_IMAGE_NAME:$DOCKER_TAG
+    - sleep 30
+    - docker ps
+    - echo "Testing container health..."
+    - docker exec test-container wget --no-verbose --tries=1 --spider http://localhost:8080 || exit 1
+    - docker stop test-container
+    - echo "Docker image test completed successfully"
+  dependencies:
+    - build
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+    - if: $CI_COMMIT_BRANCH == "develop"
+
+# Deploy to staging/production
+deploy:staging:
+  stage: deploy
+  image: docker:latest
+  services:
+    - docker:dind
+  script:
+    - echo "Deploying to staging environment..."
+    - docker-compose -f docker-compose.yml up -d
+    - echo "Deployment to staging completed"
+  environment:
+    name: staging
+    url: http://staging.biovision.webmasters.co.ke
+  dependencies:
+    - test
+  rules:
+    - if: $CI_COMMIT_BRANCH == "develop"
+  when: manual
+
+deploy:production:
+  stage: deploy
+  image: docker:latest
+  services:
+    - docker:dind
+  script:
+    - echo "Deploying to production environment..."
+    - docker-compose -f docker-compose.yml up -d
+    - echo "Deployment to production completed"
+  environment:
+    name: production
+    url: http://biovision.webmasters.co.ke
+  dependencies:
+    - test
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+  when: manual
+
+# Build information
+build_info:
+  stage: .post
+  image: alpine:latest
+  script:
+    - echo "=== Build Information ==="
+    - echo "Project: BioVision Web Service"
+    - echo "Branch: $CI_COMMIT_BRANCH"
+    - echo "Commit: $CI_COMMIT_SHA"
+    - echo "Tag: $DOCKER_TAG"
+    - echo "Docker Image: $DOCKER_IMAGE_NAME:$DOCKER_TAG"
+    - echo "Built at: $(date)"
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+    - if: $CI_COMMIT_BRANCH == "develop"

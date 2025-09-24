@@ -1,0 +1,24 @@
+
+> biovision@0.1.0 dev
+> next dev --turbopack -p 8080
+
+   ▲ Next.js 15.3.5 (Turbopack)
+   - Local:        http://localhost:8080
+   - Network:      http://172.16.1.119:8080
+
+ ✓ Starting...
+ ✓ Ready in 1907ms
+ ○ Compiling / ...
+ ✓ Compiled / in 3.8s
+ GET / 200 in 4253ms
+ GET / 200 in 311ms
+ ○ Compiling /favicon.ico ...
+ ✓ Compiled /favicon.ico in 1134ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 1495ms
+ ○ Compiling /_not-found/page ...
+ ✓ Compiled /_not-found/page in 1237ms
+ GET /auth/signup 404 in 1364ms
+ GET /images/logo.svg 404 in 278ms
+ GET /images/logo.svg 404 in 119ms
+ GET / 200 in 89ms
+ ✓ Compiled in 235ms

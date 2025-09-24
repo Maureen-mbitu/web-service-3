@@ -1,0 +1,13 @@
+   my-api-project/
+   ├── src/
+   │   ├── controllers/
+   │   ├── models/
+   │   ├── routes/
+   │   ├── services/
+   │   ├── middlewares/
+   │   └── app.js
+   ├── tests/
+   ├── .gitignore
+   ├── package.json
+   ├── README.md
+   └── Dockerfile
