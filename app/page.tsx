@@ -668,26 +668,27 @@ export default function Home() {
               {loading ? (
                 // Loading skeletons for events
                 Array.from({ length: 3 }).map((_, index) => (
-                  <div key={index} className="rounded-2xl overflow-hidden shadow-lg">
-                    <div className="h-64 bg-gray-200 animate-pulse"></div>
+                  <div key={index} className="rounded-2xl overflow-hidden shadow-lg h-[150px]">
+                    <div className="h-full bg-gray-200 animate-pulse"></div>
                   </div>
                 ))
               ) : upcomingEvents.length > 0 ? (
                 upcomingEvents.slice(0, 3).map((event) => (
-                  <div key={event.id} className="rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 relative cursor-pointer"
+                  <div key={event.id} className="rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 relative cursor-pointer h-[150px]"
                        onClick={() => router.push('/events')}>
                     <div className="h-full bg-cover bg-center relative" 
-                         style={{backgroundImage: `linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.4) 100%), url('${event.image}')`}}>
-                      <div className="absolute top-4 left-4 bg-white/90 text-gray-700 text-xs font-medium px-3 py-1 rounded-full">
+                         style={{backgroundImage: `linear-gradient(135deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.2) 100%), url('${event.image}')`}}>
+                      <div className="absolute top-2 left-2 bg-white/70 backdrop-blur-sm text-gray-700 text-xs font-medium px-2 py-1 rounded-full">
                         {event.category}
                       </div>
-                      <div className="p-6 pt-20">
-                        <h3 className="text-xl font-bold text-white mb-4">{event.title}</h3>
-                        <p className="text-white/90 text-sm mb-4 leading-relaxed">{event.description}</p>
-                        <p className="text-white/70 text-xs mb-6">
-                          {event.date} | {event.time} | {event.location}
+                      <div className="absolute inset-0 bg-black/20 backdrop-blur-[0.5px]"></div>
+                      <div className="relative z-10 p-3 h-full flex flex-col justify-center">
+                        <h3 className="text-sm font-bold text-white mb-2 leading-tight">{event.title}</h3>
+                        <p className="text-white/80 text-xs mb-2 leading-relaxed line-clamp-2">{event.description}</p>
+                        <p className="text-white/60 text-xs mb-3">
+                          {event.date} | {event.location}
                         </p>
-                        <button className="w-full bg-white text-gray-800 font-semibold py-3 px-6 rounded-full hover:bg-gray-50 transition-colors duration-300">
+                        <button className="w-full bg-white/80 backdrop-blur-sm text-gray-800 font-medium py-1 px-3 rounded-full hover:bg-white/90 transition-all duration-300 text-xs">
                           Register Now
                         </button>
                       </div>
