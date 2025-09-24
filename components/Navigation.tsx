@@ -44,7 +44,7 @@ export default function Navigation({ theme = "dark" }: NavigationProps) {
           <div key={item.name} className="flex items-center">
             <Link
               href={item.href}
-              className={`relative px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
+              className={`relative px-4 py-3 rounded-md text-base font-medium transition-colors duration-200 ${
                 isActive(item.href)
                   ? 'text-green-600'
                   : theme === 'light' 

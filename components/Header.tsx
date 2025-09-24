@@ -20,9 +20,9 @@ export const Header = ({ theme = "dark" }: HeaderProps) => {
   const headerBg = theme === "light" ? "bg-white/95 backdrop-blur-sm border-b border-gray-200" : "bg-black/20 backdrop-blur-sm border-b border-white/10";
   
   return (
-    <header className={`w-full z-50 ${headerBg} ${theme === 'dark' ? 'fixed top-0 left-0 right-0' : 'sticky top-0'}`}>
+    <header className={`w-full z-50 ${headerBg}`}>
       <div className="w-full">
-        <div className="max-w-[1440px] mx-auto px-4 md:px-6 flex items-center justify-between h-16 md:h-20">
+        <div className="max-w-[1440px] mx-auto px-4 md:px-6 flex items-center justify-between h-20 md:h-28">
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center py-2">
             <Link href="/">

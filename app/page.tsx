@@ -101,7 +101,7 @@ export default function Home() {
   return (
     <div className="w-full min-h-screen">
       <div className="relative min-h-screen w-full overflow-x-hidden">
-        <section className="pt-20 sm:pt-24 lg:pt-32 pb-16 w-full px-4 md:px-6 flex flex-col items-center justify-center text-center relative overflow-hidden">
+        <section className="pt-8 sm:pt-12 lg:pt-16 pb-16 w-full flex flex-col items-center justify-center text-center relative overflow-hidden">
           {/* Video Background */}
           <video 
             className="absolute inset-0 w-full h-full object-cover"
@@ -114,7 +114,7 @@ export default function Home() {
           </video>
           <div className="absolute inset-0 bg-black/50"></div>  {/* try /40, /50, /60 */}
 
-          <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-12 w-full px-4 md:px-6 lg:px-8 z-10">
+          <div className="max-w-[1440px] mx-auto flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-12 w-full px-4 md:px-6 lg:px-8 z-10">
             {/* Hero Text */}
             <div className="text-white max-w-xl text-left">
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-4 lg:mb-6 drop-shadow-lg">
@@ -174,8 +174,8 @@ export default function Home() {
         </section>
 
         {/* Stats Section */}
-        <section className="bg-[#fdfbf6] pt-20 pb-10 px-4 md:px-8 lg:px-16 text-gray-900 w-full">
-          <div className="bg-[#fdfbf6] w-full flex flex-col gap-16">
+        <section className="bg-[#fdfbf6] pt-20 pb-10 w-full text-gray-900">
+          <div className="max-w-[1440px] mx-auto px-4 md:px-6 flex flex-col gap-16">
             <div className="flex flex-col lg:flex-row justify-between items-start gap-12">
               <div className="max-w-xl">
                 <h2 className="text-5xl md:text-6xl font-extrabold leading-tight text-black mb-6">
@@ -258,8 +258,8 @@ export default function Home() {
 
         {/* outlet */}
 
-        <section className="bg-[#fdfbf6] pt-10 pb-24 px-4 md:px-8 lg:px-12 w-full">
-          <div className="bg-[#fdfbf6] w-full text-center relative z-10">
+        <section className="bg-[#fdfbf6] pt-10 pb-24 w-full">
+          <div className="max-w-[1440px] mx-auto px-4 md:px-6 text-center relative z-10">
             <h2 className="text-[2.5rem] md:text-5xl font-bold text-gray-900 leading-snug mb-6">
               Find <span className="text-green-700">Agroecological</span><br/>
               <span className="text-green-700">Outlets</span> Near You
@@ -325,8 +325,8 @@ export default function Home() {
         </section>
 
         {/* Featured Products Section */}
-        <section className="bg-[#fdfbf6] py-20 px-4 md:px-8 lg:px-12 w-full">
-          <div className="bg-[#fdfbf6] w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
+        <section className="bg-[#fdfbf6] py-20 w-full">
+          <div className="max-w-[1440px] mx-auto px-4 md:px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
             <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
               {loading ? (
                 // Loading skeletons
@@ -399,13 +399,13 @@ export default function Home() {
           </div>
         </section>
 {/* ✅ How It Works Section */}
-<section className="bg-[#fdfcf7] pt-20 pb-10 px-4 md:px-8 lg:px-12 relative overflow-hidden">
+<section className="bg-[#fdfcf7] pt-20 pb-10 relative overflow-hidden w-full">
   {/* Decorative background elements */}
   <div className="absolute top-10 left-10 w-32 h-32 bg-green-200/30 rounded-full blur-3xl" />
   <div className="absolute bottom-10 right-10 w-40 h-40 bg-green-300/20 rounded-full blur-3xl" />
   <div className="absolute top-1/2 left-1/4 w-24 h-24 bg-green-100/40 rounded-full blur-2xl" />
   
-  <div className="max-w-7xl mx-auto text-center  relative z-10">
+  <div className="max-w-[1440px] mx-auto px-4 md:px-6 text-center relative z-10">
     {/* Section Header */}
     <div className="mb-16">
       <p className="text-sm font-medium text-green-700 mb-2 uppercase tracking-wide">How It Works</p>
@@ -540,8 +540,8 @@ export default function Home() {
   </div>
 </section>
 {/* ✅ Stories & Insights From the Field Section */}
-<section className="bg-[#f8f9fa] py-20 px-4 md:px-8 lg:px-12">
-      <div className="max-w-7xl mx-auto">
+<section className="bg-[#f8f9fa] py-20 w-full">
+      <div className="max-w-[1440px] mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           
           {/* Left Content */}
@@ -653,8 +653,8 @@ export default function Home() {
     </section>
 
         {/* Events Section */}
-        <section className="bg-[#fdfbf6] py-20 px-4 md:px-8 lg:px-12 w-full">
-          <div className="w-full">
+        <section className="bg-[#fdfbf6] py-20 w-full">
+          <div className="max-w-[1440px] mx-auto px-4 md:px-6">
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
                 Upcoming Events &<br/>Trainings
@@ -713,8 +713,8 @@ export default function Home() {
         </section>
 
         {/* CTA Section */}
-        <section className="bg-[#fdfbf6] py-5 px-4 md:px-8 lg:px-12 mb-18 w-full">
-          <div className="w-full text-center relative z-10 px-6 py-8 rounded-2xl flex flex-col justify-center overflow-hidden">
+        <section className="bg-[#fdfbf6] py-5 mb-18 w-full">
+          <div className="max-w-[1440px] mx-auto px-4 md:px-6 text-center relative z-10 rounded-2xl flex flex-col justify-center overflow-hidden py-8">
             <div className="absolute inset-0 bg-[#2E7D32] z-0"></div>
             <div className="absolute inset-0 bg-[url('/images/veges.png')] opacity-90 bg-contain bg-repeat z-0"></div>
             <div className="relative z-10">
@@ -735,8 +735,8 @@ export default function Home() {
         </section>
 
         {/* Newsletter Section */}
-        <section className="bg-[#2C2A29] py-16 px-4 md:px-8 lg:px-12 -mt-16 w-full">
-          <div className="w-full flex flex-col md:flex-row items-center justify-between gap-8">
+        <section className="bg-[#2C2A29] py-16 -mt-16 w-full">
+          <div className="max-w-[1440px] mx-auto px-4 md:px-6 flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="flex items-center gap-4 text-white">
               <div className="flex-shrink-0">
                 <svg className="w-12 h-12 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -764,8 +764,8 @@ export default function Home() {
         </section>
 
         {/* Footer Section */}
-        <footer className="bg-[#24231D] py-8 px-4 md:px-8 lg:px-12">
-          <div className="max-w-6xl mx-auto">
+        <footer className="bg-[#24231D] py-8 w-full">
+          <div className="max-w-[1440px] mx-auto px-4 md:px-6">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-6">
               
               {/* Left Section - Logo and Description */}
@@ -894,7 +894,7 @@ export default function Home() {
 
         {/* Bottom Section */}
         <div className="w-full bg-[#2C2A29] border-t border-gray-700 pt-6 pb-6">
-          <div className="max-w-9xl mx-auto px-4 md:px-8 lg:px-12 flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="max-w-[1440px] mx-auto px-4 md:px-6 flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="ml-3 text-yellow-500 text-xs font-medium">
               © 2025 BioVision Africa Trust. All Rights Reserved.
             </p>
